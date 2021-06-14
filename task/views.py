@@ -18,13 +18,15 @@ from rest_framework import viewsets, permissions
 from rest_framework import generics
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
+from verify_email.email_handler import send_verification_email
+
 # Create your views here.
 
 class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
-    
+
     @action(methods=['GET'], detail=False)
     def api_schema(self, request):
         meta = self.metadata_class()
@@ -56,4 +58,5 @@ class UserTaskList(generics.ListAPIView):
         meta = self.metadata_class()
         data = meta.determine_metadata(request, self)
         return Response(data)
+
 

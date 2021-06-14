@@ -32,6 +32,8 @@ class UserManager(BaseUserManager):
         Creates and saves a superuser with the given email, date of
         birth and password.
         """
+        # if self.form.isvalid():
+        #     inactive_user = send_verification_email(request, self.form)
         user = self.create_user(
             email = email,
             phone = phone,
@@ -55,7 +57,7 @@ class User(AbstractBaseUser):
     first_name = models.CharField(verbose_name='First Name', max_length= 20)
     last_name = models.CharField(verbose_name='Last Name', max_length = 20)
     date_of_birth = models.DateField(null=True, blank=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
