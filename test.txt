@@ -1,0 +1,1 @@
+curl -X GET http://127.0.0.1:8000/task/api/v1/ -H 'Authorization: Token 0dd863217e9c0e06493adc499f1f3d078541bd53' [{"email":"ruputpalpaul29@gmail.com","name":"Rup Paul"}]
